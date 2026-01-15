@@ -39,10 +39,9 @@
     chdir: /app
 
 - name: Copy file from ansible server to remote server
-  ansible.builtin.copy:
+  ansible.builtin.template:
     src: backend.service.j2
     dest: /etc/systemd/system/backend.service
-    remote_src: yes
 
 - name: Install python Mysql dependencies
   ansible.builtin.pip:
