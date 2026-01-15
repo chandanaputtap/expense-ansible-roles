@@ -31,16 +31,16 @@
   ansible.builtin.unarchive:
     src: /tmp/backend.zip
     dest: /app
-    remote_src: true
+    remote_src: yes
 
 - name: Install npm dependencies
   ansible.builtin.command: npm install
   args:
     chdir: /app
 
-- name: Copy backend service
+- name: Copy file from ansible server to remote server
   ansible.builtin.copy:
-    src: backend.service
+    src: backend.service.j2
     dest: /etc/systemd/system/backend.service
 
 - name: Install python Mysql dependencies
